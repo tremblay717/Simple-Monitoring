@@ -4,8 +4,8 @@
 # Claim token and room ID can be found in your Netdata settings (online)
 
 # Infos to add node to dashboard
-claimToken=$(grep 'CLAIM_TOKEN' ./conf |  awk -F'=' '{print $2}')
-roomID=$(grep 'ROOM_ID' ./conf |  awk -F'=' '{print $2}')
+claimToken=$(grep 'CLAIM_TOKEN' ./conf | awk -F'=' '{print $2}')
+roomID=$(grep 'ROOM_ID' ./conf | awk -F'=' '{print $2}')
 
 # Netdata Linux Installation && Adding Node to dashboard
 echo -e "Netdata Install\n"
