@@ -9,16 +9,16 @@ roomID=$(grep 'ROOM_ID' ./conf | awk -F'=' '{print $2}')
 
 # Netdata Linux Installation && Adding Node to dashboard
 echo -e "Netdata Install\n"
-curl https://get.netdata.cloud/kickstart.sh > /tmp/netdata-kickstart.sh && sh /tmp/netdata-kickstart.sh --stable-channel --claim-token "$claimToken" --claim-rooms "$roomID" --claim-url https://app.netdata.cloud
-
-# Install stress-ng
-echo -e "\nInstalling stress-ng\n"
-sudo apt install -y stress-ng
+curl https://get.netdata.cloud/kickstart.sh > /tmp/netdata-kickstart.sh && sh /tmp/netdata-kickstart.sh --stable-channel --disable-telemetry --claim-token "$claimToken" --claim-rooms "$roomID" --claim-url https://app.netdata.cloud
 
 # Prepare cpu.conf
 cpu_conf="/opt/netdata/etc/netdata/health.d/cpu.conf"
 sudo mkdir -p /opt/netdata/etc/netdata/health.d
 sudo cp ./cpu.conf "$cpu_conf"
+
+# Install stress-ng
+echo -e "\nInstalling stress-ng\n"
+sudo apt install -y stress-ng
 
 # Restart Netdata
 sudo service netdata restart
